@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee</title>
+</head>
+<body>
+
+<h1 id="greeting"></h1>
+
+<script>
+      const user = localStorage.getItem("user");
+
+      if (!user) {
+        // not logged in, go back
+        window.location.href = "/login.html";
+      } else {
+        document.getElementById("greeting").innerText =
+          `Hi ${user}`;
+      }
+    </script>
+
+</body>
+</html>

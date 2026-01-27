@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: #9b93936b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
+}
+
+/* QR DISPLAY*/
+
+/* LEFT SIDE */
+.qr-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.qr-circle {
+  width: 24rem;
+  height: 24rem;
+  border-radius: 50%;
+  background: rgb(112, 95, 95);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.text-section {
+  max-width: 24rem;
+}
+
+.text-section h1 {
+  font-size: 5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bolder;
+}
+
+.subtitle {
+  font-size: 2rem;
+  color: #554040;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.status {
+  font-size: 1.2rem;
+  color: #413b3b;
+  font-weight: bold;
+}
+
+.waiting {
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.waiting::after {
+  content: " .";
+  display: inline-block;
+  margin-left: 0.3rem;
+  font-size: 1.8rem;
+  animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+  0%   { content: " ."; }
+  33%  { content: " .."; }
+  66%  { content: " ..."; }
+  100% { content: " ."; }
+}
+
+/* MOBILE LOGIN */
+
+.mobileLogin {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 600px;
+  padding: 2rem;
+  background-color: #9b93936b;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  justify-content: center;
+  min-height: 50%;
+}
+
+.mobileLogin form {
+  display: flex;
+  flex-direction: column;
+}
+
+.mobileLogin h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mobileLogin input {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.mobileLogin button {
+  padding: 10px;
+  background-color: #d18f95bd;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.mobileLogin button:hover {
+  background-color: #b86b72bd;
+}
+
+
+.mobileLogin p {
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;  
+}
+
+.mobileLogin p.error {
+  color: red;
+}
+.mobileLogin p.success {
+  color: green;
+}
