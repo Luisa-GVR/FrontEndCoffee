@@ -8,9 +8,13 @@
 body {
   min-height: 100vh;
   background: #9b93936b;
+}
+
+.login-page {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .login-container {
@@ -26,7 +30,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .qr-circle {
@@ -146,6 +149,23 @@ body {
 
 /* COFFEE CARDS */
 
+.page-container {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.coffee-container {
+  width: 100%;
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+
 .coffee-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -165,7 +185,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     margin-bottom: 0.5rem;
 }
 

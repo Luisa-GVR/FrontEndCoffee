@@ -9,22 +9,25 @@
   </head>
 
   <body>
-    <main class="login-container">
+    <div class="login-page">
+      <main class="login-container">
+          
+        <section class="qr-section">
+          <div class="qr-circle">
+            <div id="qr"></div>
+          </div>
+        </section>
 
-      <section class="qr-section">
-        <div class="qr-circle">
-          <div id="qr"></div>
-        </div>
-      </section>
+        <section class="text-section">
+          <h1>Scan me!</h1>
+          <p class="subtitle">Scan the QR to login</p>
+          <p id="status" class="waiting">Waiting for login</p>
+        </section>
 
-      <section class="text-section">
-        <h1>Scan me!</h1>
-        <p class="subtitle">Scan the QR to login</p>
-        <p id="status" class="waiting">Waiting for login</p>
-      </section>
+      </main>
 
-    </main>
-
+    </div>
+    
     <script src="js/login.js"></script>
   </body>
 </html>

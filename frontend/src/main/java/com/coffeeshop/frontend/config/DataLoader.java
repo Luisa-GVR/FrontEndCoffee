@@ -24,12 +24,26 @@ public class DataLoader {
             userRepository.save(
                     new User("Luisa", "luisagavr@gmail.com", "luisa123")
             );
+            userRepository.save(
+                    new User("Marianin", "marianin@gmail.com", "marianin123")
+            );
         }
 
         if (coffeeRepository.count() == 0) {
             coffeeRepository.save(new Coffee("Espresso", "img/espresso.png", 35.0));
             coffeeRepository.save(new Coffee("Capuccino", "img/capuccino.png", 45.0));
             coffeeRepository.save(new Coffee("Mocha", "img/mocha.png", 28.0));
+            coffeeRepository.save(new Coffee("Americano", "img/americano.png", 22.0));
+            coffeeRepository.save(new Coffee("Latte", "img/latte.png", 40.0));
+            coffeeRepository.save(new Coffee("Turkish", "img/turkish.png", 55.0));
+            coffeeRepository.save(new Coffee("Frappe", "img/frappe.png", 70.0));
+            coffeeRepository.save(new Coffee("Cold Brew", "img/coldbrew.png", 33.0));
+            coffeeRepository.save(new Coffee("Irish", "img/irish.png", 38.0));
+            coffeeRepository.save(new Coffee("Cortado", "img/cortado.png", 33.0));
+            coffeeRepository.save(new Coffee("Flat White", "img/flatwhite.png", 44.0));
+            coffeeRepository.save(new Coffee("Machiatto", "img/machiatto.png", 52.0));
+            coffeeRepository.save(new Coffee("El Gallo jefe", "img/logo.jpg", 1234.56));
+
         }
     }
 
