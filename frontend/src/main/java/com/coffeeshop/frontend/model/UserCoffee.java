@@ -20,5 +20,35 @@ public class UserCoffee {
     @JoinColumn(name = "coffee_id")
     private Coffee coffee;
 
+    public UserCoffee(User user, Coffee coffee) {
+        this.user = user;
+        this.coffee = coffee;
+    }
 
+    public UserCoffee() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Coffee getCoffee() {
+        return coffee;
+    }
+
+    public void setCoffee(Coffee coffee) {
+        this.coffee = coffee;
+    }
 }

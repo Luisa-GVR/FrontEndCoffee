@@ -9,7 +9,10 @@ import java.util.Optional;
 public interface UserCoffeeRepository extends JpaRepository<UserCoffee, Long> {
 
 
-    Optional<UserCoffee> findByUserIdAndCoffeeId(Long userId, Long coffeeId);
+    Optional<UserCoffee> findByUserEmailAndCoffeeId(String email, Long coffeeId);
     List<UserCoffee> findByUserId(Long userId);
+    boolean existsByUserEmailAndCoffeeId(String email, Long coffeeId);
+
+    long countByCoffeeId(Long coffeeId);
 
 }

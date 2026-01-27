@@ -22,6 +22,10 @@ public class Coffee {
         this.price = price;
     }
 
+    public Coffee(){
+
+    }
+
     public Long getId() {
         return id;
     }

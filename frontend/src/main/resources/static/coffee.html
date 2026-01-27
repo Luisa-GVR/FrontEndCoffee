@@ -1,23 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Coffee</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 id="greeting"></h1>
+<header>
+    <h1 id="greeting"></h1>
+</header>
+
+<main class="coffee-container">
+    
+    <section class="favorites">
+        <h2>Your Favorites</h2>
+        <div id="favorites-list" class="coffee-list">
+           <!-- Added info with js -->
+        </div>
+    </section>
+
+    <!-- All Coffees Section -->
+    <section class="all-coffees">
+    <h2>All Coffees</h2>
+
+    <label for="sortSelect">Sort by:</label>
+    <select id="sortSelect">
+        <option value="name,asc">Alphabetical A-Z</option>
+        <option value="name,desc">Alphabetical Z-A</option>
+        <option value="price,asc">Price Low to High</option>
+        <option value="price,desc">Price High to Low</option>
+        <option value="favoriteCount,desc">Most Popular</option>
+    </select>
+
+    <div id="all-coffees-list" class="coffee-list">
+        <!-- Added info with js -->
+    </div>
+</section>
+
+</main>
 
 <script>
-      const user = localStorage.getItem("user");
-
-      if (!user) {
+    const user = localStorage.getItem("user");
+    if (!user) {
         // not logged in, go back
         window.location.href = "/login.html";
-      } else {
-        document.getElementById("greeting").innerText =
-          `Hi ${user}`;
-      }
-    </script>
+    }
+</script>
+<script src="js/coffee.js"></script>
+
 
 </body>
 </html>
