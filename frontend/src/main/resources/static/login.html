@@ -2,32 +2,65 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Login</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Coffee App</title>
+   
+    <!-- Preconnect CDN -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+   
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   </head>
 
-  <body>
-    <div class="login-page">
-      <main class="login-container">
-          
-        <section class="qr-section">
-          <div class="qr-circle">
-            <div id="qr"></div>
+  <body class="login-page">
+    <!-- Accessibility options, skip link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+   
+    <main id="main-content" class="login-container">
+      <div class="login-card">
+
+        <h1 class="login-title">Scan to Login</h1>
+       
+        <section class="qr-section" aria-labelledby="qr-title">
+          <h2 id="qr-title" class="sr-only">QR Code</h2>
+          <div class="qr-circle" role="img" aria-label="QR code for authentication">
+            <div id="qr" class="qr-code"></div>
+          </div>
+          <p class="qr-instructions">Point your camera at the QR code</p>
+        </section>
+
+        <section class="text-section" aria-live="polite" aria-atomic="true">
+          <h2 class="section-title">Get Started</h2>
+          <p class="subtitle">Scan the QR code with your mobile device to log in</p>
+         
+          <div id="status-container">
+            <div id="status" class="status waiting" role="status">
+              <span class="status-indicator"></span>
+              <span class="status-text">Waiting for login...</span>
+            </div>
+            <p class="helper-text">
+              Having trouble?
+              <button id="refresh-qr" class="text-button" type="button">
+                Generate new QR code
+              </button>
+            </p>
           </div>
         </section>
+      </div>
+     
+      <!-- Informative footer -->
+      <footer class="login-footer">
+        <p>Need help? <a href="/help.html" class="footer-link">Contact support</a></p>
+      </footer>
+    </main>
 
-        <section class="text-section">
-          <h1>Scan me!</h1>
-          <p class="subtitle">Scan the QR to login</p>
-          <p id="status" class="waiting">Waiting for login</p>
-        </section>
-
-      </main>
-
-    </div>
-    
-    <script src="js/login.js"></script>
+    <script src="js/login.js" defer></script>
+   
+    <!-- JS Fallback -->
+    <noscript>
+      <div class="noscript-warning">
+        <p>JavaScript is required for this login method. Please enable JavaScript or use an alternative login method.</p>
+      </div>
+    </noscript>
   </body>
 </html>

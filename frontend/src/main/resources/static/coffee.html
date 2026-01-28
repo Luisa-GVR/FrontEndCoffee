@@ -2,67 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Coffee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee - Dashboard</title> 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="header-container" aria-label="Header navigation"></div>
 
-    <div id="header-container"></div>
+    <main class="page-container" role="main">
 
-
-    <main class="page-container">
-
-        <div class="coffee-container"> 
-            <section class="favorites">
-                <h2>Your Favorites</h2>
-                <div id="favorites-list" class="coffee-list">
-                <!-- Added info with js -->
+        <h1 class="sr-only">Coffee Dashboard</h1>
+       
+        <div class="coffee-container">
+            <section class="favorites" aria-labelledby="favorites-heading">
+                <h2 id="favorites-heading">Your Favorites</h2>
+                <div id="favorites-list" class="coffee-list" role="list" aria-label="List of favorite coffees">
+                    <!-- Dynamic content -->
+                </div>
+                <!-- Empty state -->
+                <div id="favorites-empty" class="empty-state" style="display: none;">
+                    <p>You haven't added any favorites yet.</p>
                 </div>
             </section>
 
-            <!-- All Coffees Section -->
-            <section class="all-coffees">
-                <h2>All Coffees</h2>
+            <section class="all-coffees" aria-labelledby="all-coffees-heading">
+                <h2 id="all-coffees-heading">All Coffees</h2>
+               
+                <div class="sort-controls">
+                    <label for="sortSelect" class="sort-label">Sort by:</label>
+                    <select id="sortSelect" aria-label="Sort coffee list">
+                        <option value="name,asc">Alphabetical A-Z</option>
+                        <option value="name,desc">Alphabetical Z-A</option>
+                        <option value="price,asc">Price Low to High</option>
+                        <option value="price,desc">Price High to Low</option>
+                        <option value="favoriteCount,desc">Most Popular</option>
+                    </select>
+                </div>
 
-                <label for="sortSelect">Sort by:</label>
-                <select id="sortSelect">
-                    <option value="name,asc">Alphabetical A-Z</option>
-                    <option value="name,desc">Alphabetical Z-A</option>
-                    <option value="price,asc">Price Low to High</option>
-                    <option value="price,desc">Price High to Low</option>
-                    <option value="favoriteCount,desc">Most Popular</option>
-                </select>
-
-                <div id="all-coffees-list" class="coffee-list">
-                    <!-- Added info with js -->
+                <div id="all-coffees-list" class="coffee-list" role="list" aria-label="List of all coffees">
+                    <!-- Dynamic content -->
+                </div>
+               
+                <div id="loading-indicator" class="loading" style="display: none;">
+                    Loading coffees...
                 </div>
             </section>
-
         </div>
-
-        
-        
     </main>
 
     <script>
-        const user = localStorage.getItem("user");
-        if (!user) {
-            // not logged in, go back
-            window.location.href = "/login.html";
-        }
+        // Auth verification
+        (function() {
+            const user = localStorage.getItem("user");
+            if (!user) {
+                window.location.href = "/login.html";
+                return;
+            }
+           
+            // Header loading with error handling
+            fetch("/partials/header.html")
+                .then(res => {
+                    if (!res.ok) throw new Error('Failed to load header');
+                    return res.text();
+                })
+                .then(html => {
+                    document.getElementById("header-container").innerHTML = html;
+                    if (typeof initHeader === 'function') {
+                        initHeader();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading header:', error);
+                    document.getElementById("header-container").innerHTML =
+                        '<div class="error">Failed to load navigation</div>';
+                });
+        })();
     </script>
-    <script>
-        fetch("/partials/header.html")
-            .then(res => res.text())
-            .then(html => {
-                document.getElementById("header-container").innerHTML = html;
-                initHeader();
-            });
-        </script>
 
-    <script src="js/coffee.js"></script>
-    <script src="/js/header.js"></script>
-
-
+    <script src="js/coffee.js" defer></script>
+    <script src="/js/header.js" defer></script>
 </body>
 </html>
