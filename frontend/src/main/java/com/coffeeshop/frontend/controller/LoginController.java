@@ -6,6 +6,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.InetAddress;
 import java.util.Map;
@@ -37,12 +38,14 @@ public class LoginController {
     public Map<String, String> getQrLink(HttpServletRequest request) {
         String sessionId = UUID.randomUUID().toString();
 
-        String scheme = request.getScheme();
-        String host = getLocalIp();
-        int port = request.getServerPort();
+        String baseUrl = ServletUriComponentsBuilder
+                .fromRequestUri(request)
+                .replacePath(null)
+                .replaceQuery(null)
+                .build()
+                .toUriString();
 
-        String url = scheme + "://" + host + ":" + port +
-                "/qr-login.html?session=" + sessionId;
+        String url = baseUrl + "/qr-login.html?session=" + sessionId;
 
         return Map.of(
                 "url", url,
